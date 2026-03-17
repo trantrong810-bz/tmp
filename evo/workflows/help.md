@@ -11,6 +11,7 @@ description: Show available commands, detect project type, recommend next action
 | `/create [brief\|prd\|ux\|epics\|full]` | Product lifecycle creation (BMAD → docs/) |
 | `/dev [story\|feature]` | Develop — story mode (BMAD tracking) or quick mode |
 | `/enhance [feature]` | Add feature to existing project (brownfield + change mgmt) |
+| `/refactor [scan\|assess\|plan\|execute\|verify]` | Legacy modernization (TDD-based, zero regression) |
 | `/review` | Multi-layer code review (BMAD adversarial + domain checklist) |
 | `/test [file\|e2e\|coverage\|perf\|report]` | Smart testing — auto-detects framework |
 | `/debug [issue]` | Systematic debugging (SP 4-phase + domain patterns) |
@@ -20,7 +21,7 @@ description: Show available commands, detect project type, recommend next action
 | `/brainstorm [topic]` | Guided brainstorming (BMAD 4-mode or structured exploration) |
 | `/orchestrate [task]` | Multi-expert coordination (Party / Expert panel / Parallel) |
 | `/architecture` | Design architecture (BMAD guided + domain agent consult) |
-| `/status` | Sprint status (BMAD sprint-status.yaml) |
+| `/status [ops]` | Sprint status or operational health |
 | `/help` | This command reference |
 
 ## Project Detection

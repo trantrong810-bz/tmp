@@ -150,7 +150,7 @@ docs/
 
 ### Industry-Standard Templates
 
-Templates in `evo/templates/docs/` (25 total):
+Templates in `evo/templates/docs/` (26 total):
 
 | Template | Standard | Workflow | docs/ path |
 |----------|----------|---------|-----------|
@@ -181,6 +181,7 @@ Templates in `evo/templates/docs/` (25 total):
 | `change-request-template.md` | ITIL Change Mgmt | `/enhance` | `06-reports/change-requests/` |
 | `retrospective-template.md` | Agile retro | `/plan retro` | `06-reports/retrospectives/` |
 | `release-notes-template.md` | Customer-facing | `/deploy` | per release |
+| `refactor-assessment-template.md` | Gap analysis | `/refactor assess` | `06-reports/` |
 | **Shared** | | | |
 | `glossary-template.md` | DDD ubiquitous lang | `/architecture` | `00-project/` |
 | `document-index-template.md` | Index | auto | `DOCUMENT-INDEX.md` |

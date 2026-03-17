@@ -302,7 +302,7 @@ Write-Host "[11/13] Syncing evo workflows (smart override)" -ForegroundColor Whi
 $evoWorkflows = Join-Path $EvoDir "workflows"
 
 # Evo workflows OVERRIDE these AG Kit workflows (whitelist)
-$overrideWhitelist = @("brainstorm", "create", "dev", "debug", "test", "review", "plan", "status", "orchestrate", "enhance", "architecture", "help", "deploy", "incident")
+$overrideWhitelist = @("brainstorm", "create", "dev", "debug", "test", "review", "plan", "status", "orchestrate", "enhance", "architecture", "help", "deploy", "incident", "refactor")
 
 if (Test-Path $evoWorkflows) {
     $customWorkflows = Get-ChildItem $evoWorkflows -File -Filter "*.md"
