@@ -1,0 +1,96 @@
+# Evo Trident — Agent & Project Registry
+# Single source of truth for project detection and agent routing
+
+version: 1
+evo_version: "2.0.0"
+
+# -----------------------------------------------
+# Project Type Detectors
+# Workflows read this to auto-select the right agent
+# -----------------------------------------------
+project_detectors:
+
+  java-spring:
+    detect_files: ["pom.xml", "build.gradle", "build.gradle.kts"]
+    markers: ["spring-boot-starter", "org.springframework"]
+    agent: java-backend-specialist       # evo agent (enhanced)
+    base_skills:
+      - agkit-java-spring-boot
+      - agkit-java
+      - clean-code
+      - database-design
+      - api-patterns
+      - testing-patterns
+      - vulnerability-scanner
+
+  react-frontend:
+    detect_files: ["package.json"]
+    markers: ["react", "next", "@types/react"]
+    agent: frontend-specialist           # AG Kit agent
+    base_skills:
+      - agkit-nextjs-react-expert
+      - agkit-tailwind-patterns
+      - agkit-frontend-design
+
+  python-backend:
+    detect_files: ["pyproject.toml", "requirements.txt", "setup.py"]
+    markers: ["django", "fastapi", "flask"]
+    agent: backend-specialist            # AG Kit agent
+    base_skills:
+      - agkit-python-patterns
+
+  nodejs-backend:
+    detect_files: ["package.json"]
+    markers: ["express", "nestjs", "fastify", "hono"]
+    agent: backend-specialist            # AG Kit agent
+    base_skills:
+      - agkit-nodejs-best-practices
+
+  mobile-react-native:
+    detect_files: ["package.json", "app.json"]
+    markers: ["react-native", "expo"]
+    agent: mobile-developer              # AG Kit agent
+    base_skills:
+      - agkit-mobile-design
+
+  rust:
+    detect_files: ["Cargo.toml"]
+    agent: backend-specialist            # AG Kit agent
+    base_skills:
+      - agkit-rust-pro
+
+  devops:
+    detect_files: ["Dockerfile", "docker-compose.yml", "docker-compose.yaml"]
+    secondary: ["k8s/", ".github/workflows/", "Jenkinsfile"]
+    agent: devops-engineer               # AG Kit agent
+    base_skills:
+      - agkit-deployment-procedures
+      - agkit-server-management
+
+# -----------------------------------------------
+# Shared SP discipline skills (all agents get these)
+# -----------------------------------------------
+shared_discipline_skills:
+  - sp-test-driven-development
+  - sp-verification-before-completion
+  - sp-systematic-debugging
+  - sp-requesting-code-review
+
+# -----------------------------------------------
+# Workflow override whitelist
+# -----------------------------------------------
+workflow_overrides:
+  - brainstorm
+  - create
+  - dev
+  - debug
+  - test
+  - review
+  - plan
+  - status
+  - orchestrate
+  - enhance
+  - architecture
+  - help
+  - deploy
+  - incident
