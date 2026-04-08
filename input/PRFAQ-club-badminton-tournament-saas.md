@@ -1,4 +1,4 @@
-Tuyệt. Với stage hiện tại, **PRFAQ** rất hợp để “đóng băng vision” trước khi viết requirements.
+ 8cos Tuyệt. Với stage hiện tại, **PRFAQ** rất hợp để “đóng băng vision” trước khi viết requirements.
 
 Mình sẽ viết theo format startup chuẩn (Amazon style) nhưng tối giản cho MVP.
 
@@ -10,7 +10,7 @@ Mình sẽ viết theo format startup chuẩn (Amazon style) nhưng tối giản
 
 **FOR IMMEDIATE RELEASE**
 
-### Giới thiệu *[Working name]* – Ứng dụng giúp CLB tổ chức giải cầu lông trong 30 phút thay vì 1 ngày
+### Giới thiệu *[Working name]* – Ứng dụng giúp CLB thiết lập và lên lịch giải cầu lông trong 30 phút thay vì cả buổi loay hoay với Excel
 
 Hà Nội – Hôm nay chúng tôi giới thiệu *[Working name]*, ứng dụng iOS giúp ban tổ chức CLB cầu lông tạo và vận hành giải đấu nhỏ (8–32 đội) nhanh chóng, chính xác và chuyên nghiệp.
 
@@ -97,15 +97,15 @@ Người dùng có thể:
 
 1. Tạo giải: Tên giải, ngày thi đấu, logo, banner, mô tả giải.
 2. Tạo các nội dung thi đấu: Gắn kèm 2 Preset luật điểm số linh hoạt (Đánh 1 Set hoặc Best of 3).
-3. Nhập danh sách cá nhân/đội thi đấu (Có hỗ trợ gắn tên CLB nếu là giải mở rộng).
+3. Nhập danh sách cá nhân/đội thi đấu cực nhanh: Hỗ trợ tính năng Paste (dán) nguyên cột danh sách từ Excel/Zalo để hệ thống tự nhận diện, thay vì phải gõ tay từng tên trên điện thoại.
 4. Random / manual seeding.
 5. Generate bracket với 3 Template tự động (1 click):
-   - Vòng bảng + Loại trực tiếp (Group Stage -> Knockout)
+   - Vòng bảng + Loại trực tiếp (Group Stage -> Knockout) (Lưu ý: Ở vòng bảng, hệ thống tự động tính Nhất/Nhì dựa trên hiệu số, NHƯNG quyền quyết định ghép đội nào vào vòng Knockout hoàn toàn do Admin bấm chọn thủ công để xử lý mọi tình huống).
    - Chỉ đấu Vòng tròn (League / Round Robin)
    - Chỉ Loại trực tiếp (Single Knockout)
 6. Regenerate bracket khi cần (ví dụ: có đội bỏ thi đấu phút chót).
 7. Nhập điểm trận linh hoạt: Nhập điểm số thực tế trên sân và tự đánh dấu Đội Thắng (linh hoạt tối đa, tin tưởng Admin).
-8. Tự động cập nhật Match Queue và tự lấp tiếp sơ đồ Bracket.
+8. Tự động cập nhật Match Queue thông minh: Kèm theo tính năng "Bỏ qua / Quẹt lùi" (Skip / Move down) để linh hoạt đẩy lùi các trận đấu mà VĐV đang bận sân khác hoặc cần nghỉ mệt. Tự lấp tiếp sơ đồ Bracket.
 9. Share link public theo dõi giải thời gian thực.
 
 Nếu thiếu 1 trong các mục trên → MVP fail.
@@ -119,7 +119,7 @@ Nếu thiếu 1 trong các mục trên → MVP fail.
 * Notification
 * Ranking / stats
 * Multi admin
-* Offline mode
+* Offline mode toàn diện (Tuy nhiên, MVP phải thiết kế cơ chế Cache lưu tạm điểm số tại máy nếu mạng 4G chập chờn, khi có mạng tự đẩy lên để tránh văng app).
 * Sponsor / branding nâng cao
 * Check-in VĐV
 * Tournament format phức tạp
@@ -146,6 +146,7 @@ Metric quan trọng nhất:
 1. Bracket + scheduling đủ tốt chưa?
 2. Nhập điểm có đủ nhanh và ít sai sót không?
 3. BTC có tin tưởng dùng trong ngày thi đấu thật không?
+4. Hạ tầng mạng: Sóng 4G tại các nhà thi đấu mái tôn thường rất kém, app có rủi ro bị treo hoặc mất dữ liệu khi cập nhật điểm.
 
 ---
 
