@@ -60,3 +60,6 @@ tmp/
 *.tmp
 *.swp
 *~
+
+# Project docs (sensitive/private)
+docs/

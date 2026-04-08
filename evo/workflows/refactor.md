@@ -12,6 +12,11 @@ $ARGUMENTS
 
 ```
 /refactor scan          Scan codebase, generate AS-IS docs
+/refactor scan business Generate business docs (PRD, Use Cases, User Flows)
+/refactor scan srs      Generate SRS (IEEE 830, BR extraction from code)
+/refactor scan ux       Generate UX spec + design system
+/refactor scan epics    Generate Epics/Stories from code
+/refactor scan full     Scan + all SDLC docs
 /refactor assess        Gap analysis vs target standards
 /refactor plan          Create phased refactor plan
 /refactor execute [id]  Execute specific refactor task (TDD, zero regression)
@@ -48,6 +53,178 @@ Read `evo/evo-registry.yaml` → detect stack → select domain agent + skills.
    - `docs/03-architecture/ARCHITECTURE-AS-IS.md` (current state)
    - `docs/03-architecture/CODEBASE.md` (file map, dependency graph)
    - Update `docs/DOCUMENT-INDEX.md`
+
+---
+
+## SCAN BUSINESS MODE
+
+```
+/refactor scan business
+```
+
+**Goal:** Generate business & requirements docs from existing code. Code is source of truth.
+
+> **Prerequisite:** Run `/refactor scan` first. Uses scan results from `{project_knowledge}/`.
+
+> **Language:** Communication + doc headers in configured language. Code refs stay English.
+
+### 4a. Business Documents → `docs/01-business/`
+
+**Product Brief** → `docs/01-business/product-brief.md`
+```
+Template: evo/templates/docs/product-brief-template.md
+Extract from: README, package description, auth roles, controllers/routes, config
+```
+
+**PRD** → `docs/01-business/prd.md`
+```
+Sections: Product Overview, Target Users (from auth/role code),
+Feature Inventory (1 section per controller), Business Workflows (mermaid flowcharts),
+NFR (from config/annotations), Known Limitations
+```
+
+**Use Cases** → `docs/01-business/use-cases.md`
+```
+For EACH controller/route group:
+  UC-XX: [Name] — Actor, Trigger, Pre/Post condition
+  Main Flow: sequenceDiagram (Actor→Frontend→API→DB)
+  Alternative + Exception Flows
+
+For schedulers/background jobs:
+  BP-XX: [Process Name] — flowchart TD with decision points
+```
+
+**User Flows** → `docs/01-business/user-flows.md`
+```
+Navigation Map: graph TD (screen connections from routes)
+Per Screen: sequenceDiagram for page load + user actions
+Auth flows: login, refresh token, logout sequences
+```
+
+Gate: User reviews ✅
+
+---
+
+## SCAN SRS MODE
+
+```
+/refactor scan srs
+```
+
+**Goal:** Generate IEEE 830 SRS with business rules extracted from code.
+
+> **Prerequisite:** Run `/refactor scan` first (and optionally `scan business`).
+
+### 4b. SRS → `docs/02-requirements/srs.md`
+
+```
+Template: evo/templates/docs/srs-template.md (IEEE 830)
+
+CRITICAL — Business Rules extraction:
+  For EACH service method with logic:
+    BR-XX-YY: [Mô tả] — `ClassName.method():lineNumber`
+
+§1 Introduction: from project overview
+§2 Overall Description: from architecture docs
+§3.1 Functional Requirements:
+  For EACH API endpoint / feature:
+    FR-NNN: [Name]
+    - Trigger, Actor, Input, Output
+    - Business Rules with code references (BR-XX-YY)
+    - State transitions (stateDiagram-v2 if state machine found)
+    - Sequence diagram (actor→service→repository→external)
+    - Exception flows with HTTP codes
+    - Validation rules table
+    - Formulas (if calculations found in code)
+§3.2 Non-Functional Requirements: from config, annotations, infrastructure
+§4 External Interfaces: from API contracts + frontend routes
+§5 Appendices:
+  A. Use Case Diagrams (link to use-cases.md)
+  B. Data Dictionary (from data-models)
+  C. Traceability Matrix: BR → FR → Epic → Code File
+```
+
+Gate: User reviews ✅
+
+---
+
+## SCAN UX MODE
+
+```
+/refactor scan ux
+```
+
+**Goal:** Generate UX design spec from frontend code.
+
+> **Prerequisite:** Run `/refactor scan` first. Only applicable if project has frontend.
+
+### 4c. UX Design → `docs/02-requirements/ux-design.md`
+
+```
+Template: evo/templates/docs/ux-design-template.md
+
+Extract from frontend routes, pages, components, CSS/theme:
+§1 User Personas: from auth roles
+§2 User Flows: link to user-flows.md
+§3 Screen Specifications:
+  Per page/route: layout diagram (mermaid graph), key interactions, data sources
+§4 Interaction Patterns: from shared components
+§5 Accessibility: WCAG notes if found
+§6 Design System:
+  Colors (CSS variables/theme), Typography, Components, Spacing & Grid
+```
+
+Gate: User reviews ✅
+
+---
+
+## SCAN EPICS MODE
+
+```
+/refactor scan epics
+```
+
+**Goal:** Generate Epic/Story mapping from code structure.
+
+> **Prerequisite:** Run `/refactor scan srs` first (needs FR references).
+
+### 4d. Epics → `docs/04-planning/epics.md`
+
+```
+Template: evo/templates/docs/epic-template.md
+
+Group by service boundaries / feature areas:
+  Epic Overview table: Epic | Tên | Module | FRs | Stories
+  Per Epic:
+    - Module, linked FRs from SRS
+    - Stories with Acceptance Criteria (Given-When-Then)
+
+Traceability Matrix: FR → Epic → Story → Code File
+```
+
+Gate: User reviews ✅
+
+---
+
+## SCAN FULL MODE
+
+```
+/refactor scan full
+```
+
+Runs all scan steps sequentially:
+1. `/refactor scan` (code scan + architecture)
+2. `/refactor scan business` (PRD, use cases, user flows)
+3. `/refactor scan srs` (IEEE 830 SRS)
+4. `/refactor scan ux` (UX spec — skip if no frontend)
+5. `/refactor scan epics` (epic/story mapping)
+6. Cross-validation:
+   - [ ] Every controller → has FR in SRS
+   - [ ] Every FR → has Epic/Story
+   - [ ] Every entity → in data-models
+   - [ ] Every route → in UX spec
+   - [ ] Every `if/switch/validation` → has BR-XX-YY in SRS
+7. Update `docs/DOCUMENT-INDEX.md` + `docs/00-project/glossary.md`
 
 ---
 

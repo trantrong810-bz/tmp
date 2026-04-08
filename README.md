@@ -1,92 +1,273 @@
-# AI Tools
+# 🚀 AI Tools — Bộ Công Cụ AI Cho Lập Trình Viên
 
+> **Một câu tóm gọn:** Đây là bộ công cụ giúp AI coding assistant (Gemini, Claude, Cursor...) trở nên **thông minh hơn 10 lần** — biết cách lập kế hoạch, viết code đúng chuẩn, review code, debug, và quản lý dự án tự động.
 
+---
 
-## Getting started
+## 📖 Mục Lục
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+- [Đây là gì?](#-đây-là-gì)
+- [Cài đặt nhanh (5 phút)](#-cài-đặt-nhanh-5-phút)
+- [Cách sử dụng](#-cách-sử-dụng)
+- [12 Lệnh chính](#-12-lệnh-chính)
+- [Cấu trúc thư mục](#-cấu-trúc-thư-mục)
+- [Hỗ trợ ngôn ngữ lập trình nào?](#-hỗ-trợ-ngôn-ngữ-lập-trình-nào)
+- [Câu hỏi thường gặp (FAQ)](#-câu-hỏi-thường-gặp)
+- [Xử lý lỗi](#-xử-lý-lỗi)
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+---
 
-## Add your files
+## 🤔 Đây là gì?
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+### Vấn đề
+
+Khi bạn dùng AI assistant (Gemini, Claude...) để code, nó thường:
+- ❌ Code bừa, không theo chuẩn project
+- ❌ Không biết test, không verify kết quả
+- ❌ Không biết kiến trúc, pattern nào phù hợp
+- ❌ Bạn phải hướng dẫn lại từ đầu mỗi lần chat mới
+
+### Giải pháp
+
+**AI Tools** = Bộ "não bổ sung" cho AI assistant, gồm **3 hệ thống** kết hợp:
+
+| Hệ thống | Vai trò | Ví dụ |
+|-----------|---------|-------|
+| **BMAD** | Quy trình — *"Làm gì trước, gì sau"* | Tạo PRD → Architecture → Sprint plan → Stories |
+| **AG Kit** | Kiến thức — *"Làm như thế nào"* | Java patterns, React best practices, DDD |
+| **Superpowers** | Kỷ luật — *"Phải test, phải verify"* | TDD, code review, debug có hệ thống |
+
+**Kết quả:** Bạn chỉ cần gõ `/dev`, `/review`, `/test`... — AI tự biết phải làm gì, dùng tool nào, theo chuẩn nào.
+
+---
+
+## ⚡ Cài Đặt Nhanh (5 phút)
+
+### Yêu cầu
+
+- Git đã cài đặt
+- AI coding assistant hỗ trợ đọc thư mục `.agent/` (Gemini Code Assist, Cursor, Cline, v.v.)
+- Node.js (để cài BMAD) — *tùy chọn*
+
+### Bước 1: Clone repo
+
+```bash
+git clone https://git.evotek.vn/evohcm/1.wip/ai-tools.git
+cd ai-tools
+```
+
+### Bước 2: Cập nhật submodules
+
+```bash
+git submodule update --init --recursive
+```
+
+### Bước 3: Cài đặt BMAD (tùy chọn)
+
+```bash
+npx bmad-method install --yes
+```
+
+### Bước 4: Copy vào dự án của bạn
+
+Cách đơn giản nhất — copy 2 thư mục này vào **root** của dự án bạn đang làm:
 
 ```
-cd existing_repo
-git remote add origin https://git.evotek.vn/evohcm/1.wip/ai-tools.git
-git branch -M main
-git push -uf origin main
+your-project/
+├── .agent/          ← Copy từ ai-tools/.agent/
+├── evo/             ← Copy từ ai-tools/evo/ (nếu muốn tùy chỉnh)
+├── src/
+├── pom.xml
+└── ...
 ```
 
-## Integrate with your tools
+> **💡 Mẹo:** Chỉ cần thư mục `.agent/` là đủ để AI assistant hoạt động. Thư mục `evo/` dùng khi bạn muốn tùy chỉnh nâng cao.
 
-- [ ] [Set up project integrations](https://git.evotek.vn/evohcm/1.wip/ai-tools/-/settings/integrations)
+### Bước 5: Bắt đầu sử dụng
 
-## Collaborate with your team
+Mở dự án trong IDE → mở AI chat → gõ `/help` → AI sẽ tự nhận diện project và hướng dẫn bạn.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+---
 
-## Test and Deploy
+## 🎯 Cách Sử Dụng
 
-Use the built-in continuous integration in GitLab.
+### Dùng cơ bản — Gõ lệnh, AI tự làm
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+Mở AI chat trong IDE và gõ:
 
-***
+```
+/dev          → Viết code (tự detect story mode hoặc quick mode)
+/test         → Chạy test (tự detect framework)
+/review       → Review code (3 lớp kiểm tra)
+/debug        → Debug có hệ thống (4 bước)
+```
 
-# Editing this README
+### Ví dụ thực tế
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+**Bạn muốn thêm tính năng mới:**
+```
+/dev thêm chức năng đăng nhập bằng Google OAuth
+```
+→ AI sẽ: đọc kiến trúc → viết test trước → code → verify → báo kết quả.
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+**Bạn muốn review code:**
+```
+/review
+```
+→ AI chạy 3 lớp review: tìm bug ẩn, edge cases, kiểm tra acceptance criteria.
 
-## Name
-Choose a self-explaining name for your project.
+**Bạn muốn debug lỗi:**
+```
+/debug trang dashboard load chậm
+```
+→ AI theo 4 bước: thu thập bằng chứng → xác định nguyên nhân → sửa → verify.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+**Bạn muốn tạo sản phẩm từ đầu:**
+```
+/create
+```
+→ AI hướng dẫn qua toàn bộ lifecycle: brief → PRD → architecture → epics → stories.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+---
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+## 📋 12 Lệnh Chính
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+| Lệnh | Chức năng | Khi nào dùng |
+|-------|-----------|-------------|
+| `/create` | Tạo sản phẩm từ đầu | Bắt đầu dự án mới |
+| `/architecture` | Thiết kế kiến trúc | Cần quyết định tech stack, patterns |
+| `/dev` | Viết code | Implement feature, fix bug |
+| `/review` | Review code | Trước khi merge PR |
+| `/test` | Chạy & viết test | Kiểm tra chất lượng code |
+| `/debug` | Debug có hệ thống | Tìm & sửa lỗi phức tạp |
+| `/enhance` | Thêm tính năng vào app có sẵn | Cải thiện sản phẩm đang chạy |
+| `/plan` | Lập kế hoạch sprint | Chia nhỏ công việc, ước lượng |
+| `/brainstorm` | Brainstorm ý tưởng | Cần sáng tạo, tìm giải pháp |
+| `/orchestrate` | Phối hợp nhiều agent | Task phức tạp cần nhiều chuyên gia |
+| `/status` | Xem tiến độ sprint | Theo dõi progress |
+| `/help` | Xem hướng dẫn | Không biết bắt đầu từ đâu |
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+> **💡 Gõ `/help` bất kỳ lúc nào** để xem chi tiết từng lệnh và gợi ý lệnh tiếp theo.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+---
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+## 📁 Cấu Trúc Thư Mục
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+```
+ai-tools/
+│
+├── .agent/                  ← 🧠 "Não" của AI (AI đọc thư mục này)
+│   ├── skills/              ← 177+ kỹ năng (BMAD + AG Kit + Superpowers)
+│   ├── workflows/           ← 16 workflows (xử lý mỗi /lệnh)
+│   ├── agents/              ← Chuyên gia ảo (backend, frontend, devops...)
+│   ├── rules/               ← Quy tắc AI phải tuân theo
+│   ├── policies/            ← Chính sách dự án
+│   └── project-context.md   ← Thông tin dự án (AI đọc đầu tiên)
+│
+├── evo/                     ← ⚙️ Cấu hình & tùy chỉnh
+│   ├── GEMINI.md            ← Bộ não chính của AI (tính cách, cách làm việc)
+│   ├── evo-registry.yaml    ← Tự động nhận diện loại project
+│   ├── agents/              ← Chuyên gia tùy chỉnh riêng
+│   ├── workflows/           ← Logic xử lý 12 lệnh
+│   ├── templates/           ← Mẫu tạo agent mới
+│   └── setup.ps1            ← Script cài đặt
+│
+├── _upstream/               ← 📦 Source gốc (Git submodules, không sửa)
+│   ├── antigravity-kit/     ← AG Kit (kiến thức domain)
+│   ├── bmad-method/         ← BMAD (quy trình)
+│   └── superpowers/         ← SP (kỷ luật code)
+│
+├── _bmad/                   ← 📝 BMAD modules (creative, game dev, testing...)
+│
+├── docs/                    ← 📄 Tài liệu dự án (cho con người đọc)
+│   ├── 00-project/          ← Giới thiệu, glossary, conventions
+│   ├── 01-business/         ← Product brief, business requirements
+│   ├── 02-requirements/     ← SRS, UX design, NFR
+│   ├── 03-architecture/     ← Architecture, domain model, API design
+│   ├── 04-epics/            ← Epics, sprint plan, stories
+│   └── 05-ux/               ← UX specifications
+│
+└── projects/                ← 📂 Thư mục chứa dự án con (nếu có)
+```
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+### Quy tắc quan trọng
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+| Thư mục | Ai sửa? | Ghi chú |
+|---------|---------|---------|
+| `.agent/` | ❌ Không sửa trực tiếp | Auto-sync từ `evo/` và `_upstream/` |
+| `evo/` | ✅ Bạn sửa ở đây | Thay đổi → chạy sync → `.agent/` tự cập nhật |
+| `_upstream/` | ❌ Chỉ đọc | Cập nhật bằng `git submodule update` |
+| `docs/` | ✅ Bạn + AI cùng sửa | Tài liệu đã duyệt, tiêu chuẩn ngành |
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+---
 
-## License
-For open source projects, say how it is licensed.
+## 🌐 Hỗ Trợ Ngôn Ngữ Lập Trình Nào?
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+AI tự nhận diện project type qua file cấu hình:
+
+| Loại project | File nhận diện | Chuyên gia AI |
+|-------------|---------------|---------------|
+| **Java / Spring Boot** | `pom.xml`, `build.gradle` | Java Backend Specialist |
+| **React / Next.js** | `package.json` + `react` | Frontend Specialist |
+| **Python** (Django, FastAPI) | `pyproject.toml`, `requirements.txt` | Backend Specialist |
+| **Node.js** (Express, NestJS) | `package.json` + `express` | Backend Specialist |
+| **React Native / Expo** | `package.json` + `react-native` | Mobile Developer |
+| **Rust** | `Cargo.toml` | Backend Specialist |
+| **DevOps** | `Dockerfile`, `docker-compose.yml` | DevOps Engineer |
+
+> **Không thấy ngôn ngữ bạn dùng?** Bạn có thể tự thêm trong `evo/evo-registry.yaml` — chỉ cần 5 dòng YAML.
+
+---
+
+## ❓ Câu Hỏi Thường Gặp
+
+### "Tôi mới hoàn toàn, bắt đầu từ đâu?"
+
+1. Copy thư mục `.agent/` vào project của bạn
+2. Mở AI chat → gõ `/help`
+3. AI sẽ tự nhận diện project và gợi ý bước tiếp theo
+
+### "Tôi chỉ cần code nhanh, không cần quy trình"
+
+Gõ `@fast` trước yêu cầu. AI sẽ bỏ qua các bước deliberation và code trực tiếp.
+
+### "AI có tự chạy test không?"
+
+Có. Khi bạn dùng `/dev`, AI mặc định theo quy trình **TDD** (Test-Driven Development): viết test trước → code → verify.
+
+### "Tôi muốn tùy chỉnh AI hoạt động khác đi"
+
+Sửa file `evo/GEMINI.md` — đây là "bộ não" quy định cách AI suy nghĩ và hành động.
+
+### "Các override nhanh"
+
+| Lệnh | Tác dụng |
+|-------|----------|
+| `@fast` | Bỏ suy nghĩ, làm ngay |
+| `@deep` | Phân tích sâu, kiến trúc |
+| `@explain` | Giải thích mọi quyết định |
+| `help` | Gợi ý lệnh tiếp theo |
+
+---
+
+## 🔧 Xử Lý Lỗi
+
+| Vấn đề | Cách sửa |
+|--------|----------|
+| Gõ `/lệnh` nhưng AI không hiểu | Kiểm tra thư mục `.agent/workflows/` có files không |
+| AI không nhận project type | Kiểm tra `evo/evo-registry.yaml` có detect_files đúng không |
+| BMAD skills bị mất | Chạy `npx bmad-method install --yes` |
+| Sau khi sync, agent vẫn cũ | Kiểm tra `evo/agents/` có file mới chưa |
+
+---
+
+## 📊 Tổng Quan Nhanh
+
+```
+177+ skills  ·  16 workflows  ·  20+ agents  ·  7 project types
+3 hệ thống (BMAD + AG Kit + Superpowers) = 1 giao diện thống nhất
+```
+
+---
+
+*Maintained by Evo team · Phiên bản hiện tại: 2.0.0*
