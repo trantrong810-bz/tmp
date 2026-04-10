@@ -54,11 +54,11 @@ Quy trình phổ biến hiện tại:
 
 ### Pain lớn nhất
 
-* Sai sót khi nhập điểm (đặc biệt khi phải chạy từ sân này sang sân khác)
-* Khó sắp xếp thứ tự trận gọi vào sân, dễ gây tình trạng đợi sân quá lâu
-* Regenerate bracket khi có thay đổi phút chót rất cực
-* Khán giả/VĐV luôn hỏi: "trận tiếp theo là gì?"
-* Khi có 3+ sân: 1 admin không thể cập nhật điểm đúng lúc cho tất cả các sân
+* Khó để cho tất cả mọi người cùng biết được kết quả các trận đấu.
+* Khó khăn trong việc lưu lại lịch sử thi đấu cho mọi người một cách dễ dàng, tiện lợi.
+* Mất công trong việc sắp xếp các trận đấu.
+* Mất công làm thủ công trong việc regenerate bracket khi có thay đổi phút chót.
+* Vận động viên bất tiện trong việc theo dõi kết quả và lịch thi đấu.
 
 👉 Ngày thi đấu = stress cực cao cho BTC.
 
@@ -80,7 +80,7 @@ Quy mô giải: 8–32 đội
 ### Secondary user (operator)
 
 Trọng tài tại sân (Referee)
-Được admin mời vào giải. Trọng tài tự chọn sân để chấm điểm.
+Được admin mời vào giải. Trọng tài tự chọn sân để chấm điểm sau khi đã được phân công bằng miệng.
 
 ### Tertiary user (viewer)
 
@@ -101,43 +101,41 @@ so that I don't feel stressed on tournament day."
 
 Người dùng có thể:
 
-1. **Tạo giải:** Tên giải, ngày thi đấu, logo, banner, mô tả giải.
+1. **Tạo giải:** Tất cả các thông tin cơ bản của giải đấu: tên giải, ngày bắt đầu, kết thúc thi đấu, địa điểm thi đấu, logo( tùy chọn, để in trên áo thi đấu, cúp, huy chương), banner( tùy chọn, hiển thị background cho giải đấu), mô tả giải.
 
-2. **Tạo các nội dung thi đấu:** Gắn kèm Preset luật điểm linh hoạt (Đánh 1 Set hoặc Best of 3). Luật điểm hiển thị trực tiếp trên màn hình nhập điểm để BTC/trọng tài không cần nhớ.
+2. **Tạo các nội dung thi đấu:** Tất cả các nội dung thi đấu có chung 1 luật hoặc các nội dung thi đấu có luật điểm riêng (mặc định là đánh 1 Set (set x chạm y, mặc định là set 25 chạm 31. Nếu x=y thì gọi luật là "chạm x không hỏi" ) hoặc Best of 3 (set x chạm y, mặc định là set 21 chạm 31)). Ở các vòng tứ kết, bán kết, chung kết có thể thay đổi luật khác nhau để trận đấu diễn ra hấp dẫn hơn, chủ yếu vẫn là 1 set (chạm 25 hoặc 31). Luật điểm hiển thị trực tiếp trên màn hình nhập điểm để BTC/trọng tài không cần nhớ.
 
-3. **Nhập danh sách cá nhân/đội cực nhanh:** Hỗ trợ tính năng Paste (dán) nguyên cột danh sách từ Excel/Zalo để hệ thống tự nhận diện, thay vì phải gõ tay từng tên trên điện thoại.
+3. **Nhập danh sách cá nhân/đội cực nhanh cho từng nội dung thi đấu:** Hỗ trợ tính năng Paste (dán) nguyên cột danh sách từ Excel/Zalo để hệ thống tự nhận diện, thay vì phải gõ tay từng tên trên điện thoại.
 
-4. **Random / manual seeding.**
-
-5. **Generate bracket — 3 Template nhanh + Custom Format:**
+4. **Generate bracket — 3 Template nhanh + Custom Format:**
    - **3 Template tự động (1 click):**
-     - Vòng bảng + Loại trực tiếp (Group Stage → Knockout). *(Lưu ý: Ở vòng bảng, hệ thống tự động tính Nhất/Nhì dựa trên hiệu số, NHƯNG quyền quyết định ghép đội nào vào vòng Knockout hoàn toàn do Admin bấm chọn thủ công để xử lý mọi tình huống).*
+     - Vòng bảng + Loại trực tiếp (Group Stage → Knockout). *(Lưu ý: Ở vòng bảng, hệ thống tự động tính thứ hạng dựa trên hiệu số, NHƯNG quyền quyết định ghép đội nào vào vòng Knockout hoàn toàn do Admin bấm chọn thủ công để xử lý mọi tình huống).*
      - Chỉ đấu Vòng tròn (League / Round Robin)
      - Chỉ Loại trực tiếp (Single Knockout)
    - **Custom Format (kết hợp tự do):** Admin có thể xây dựng format phức tạp hơn bằng cách ghép các đơn vị format cơ bản: `League` + `Group` + `Knockout` theo thứ tự tùy ý. Ví dụ: Group Stage → Round Robin trong bảng → Single Knockout. *(Đây là cách mở rộng tự nhiên không cần thêm logic mới — mỗi "phase" là 1 đơn vị format độc lập.)*
 
-6. **Regenerate bracket khi cần** (ví dụ: có đội bỏ thi đấu phút chót).
+5. **Regenerate bracket khi cần** (ví dụ: có đội bỏ thi đấu phút chót).
 
-7. **Nhập điểm trận linh hoạt:**
+6. **Nhập điểm trận linh hoạt:**
    - **Interactive mode:** Nhấn [+]/[-] từng điểm theo pha bóng thực tế (nút [+] lớn gấp 3-4 lần nút [-] để tránh fat-finger).
    - **Quick result mode:** Gõ nhanh kết quả cuối cùng sau trận.
    - Có nudge nhắc nhở nếu điểm chưa đạt điều kiện thắng khi bấm Confirm.
    - Có 60-second Undo Window sau mỗi lần confirm kết quả.
 
-8. **Tự động cập nhật Match Queue thông minh:** Kèm theo tính năng "Bỏ qua / Quẹt lùi" (Skip / Move down) để linh hoạt đẩy lùi các trận đấu mà VĐV đang bận sân khác hoặc cần nghỉ mệt. Tự lấp tiếp sơ đồ Bracket.
+7. **Tự động cập nhật Match Queue thông minh:** Dựa vào sơ đồ Bracket, hệ thống tự động cập nhật danh sách các trận đấu theo thứ tự được đánh số. Có thể thay đổi thứ tự các trận đấu bằng 2 cách: kéo thả hoặc khi trọng tài chọn 1 trận đấu là trận đấu tiếp theo thì đẩy trận đó lên bên trên tất cả những trận chưa bắt đầu (để linh hoạt đẩy lùi các trận đấu mà VĐV đang bận sân khác hoặc cần nghỉ mệt).
 
-9. **Xử lý tình huống đặc biệt:**
+8. **Xử lý tình huống đặc biệt:**
    - Walkover UI: 1 nút kết thúc trận ngay với trạng thái "Vắng mặt", không cần nhập điểm 21-0.
    - Forfeit Team: Đánh dấu đội rút lui, app tự xử lý các trận liên quan.
 
-10. **Hệ thống Admin và Trọng tài (2-Tier Role System):**
+9. **Hệ thống Admin và Trọng tài (2-Tier Role System):**
     - **Admin (BTC):** Toàn quyền — cấu hình giải, generate bracket, quản lý match queue, skip/move trận, thêm/xóa trọng tài, override bất kỳ điểm nào.
     - **Referee (Trọng tài):** Có tài khoản sẵn. Admin tìm referee bằng **email, số điện thoại, hoặc username** và add vào giải. Referee tự chọn trận để chấm điểm, **có thể cầm nhiều trận cùng lúc**. Không thể sửa bracket hay quản lý match queue.
     - **Không có Screen Lock:** Cho phép nhiều trọng tài cùng nhập điểm 1 trận — last-write-wins, conflict do BTC tự xử lý trên sân. Nhiều referee cùng xem màn hình scoring của 1 trận đều thấy điểm cập nhật real-time qua WebSocket.
     - **Admin Referee Dashboard:** Admin thấy được referee nào đang active ở trận nào. Một referee được coi là "đang active" ở trận X khi có ít nhất 1 score update trong trận X trong vòng N phút gần nhất (N = configurable, gợi ý 5 phút).
     - *(Lý do: Khi giải có 3+ sân, mỗi trọng tài tự di chuyển và cầm bất kỳ trận nào cần — linh hoạt tối đa, không cần phân công cứng nhắc.)*
 
-11. **Smart Match Notification (2 trigger mỗi trận):**
+10. **Smart Match Notification (2 trigger mỗi trận):**
     - **Trigger 1 — Khi trận bắt đầu:** Fire khi **referee nhập điểm đầu tiên** của trận (không cần nút "Bắt đầu" riêng). Notification kèm số thứ tự trận và tên đầy đủ 2 cặp đấu, gửi đến tất cả follower của giải.
     - **Trigger 2 — Khi trận gần kết thúc:** Fire khi một đội đạt ngưỡng điểm ở **set quyết định**, cảnh báo follower chuẩn bị. Ngưỡng theo từng format:
       - 1 Set 21: khi 1 đội đạt 18 điểm
@@ -147,12 +145,14 @@ Người dùng có thể:
     - **Match Lifecycle:** `PENDING → IN_PROGRESS → DONE`. Không có trạng thái CALLED. Chuyển sang `IN_PROGRESS` khi có điểm đầu tiên → kích hoạt Trigger 1. Chuyển sang `DONE` khi Admin/Referee confirm kết quả → 60s Undo Window.
     - **Hạ tầng:** Score update realtime qua WebSocket. Server evaluate threshold sau mỗi update và dispatch FCM/APNs với idempotency (mỗi trigger chỉ gửi đúng 1 lần/trận).
 
-12. **Resilience khi mạng chập chờn:**
+11. **Resilience khi mạng chập chờn:**
     - Optimistic Local Commit: Điểm được lưu local ngay lập tức, sync server sau.
     - "Saved Locally" Toast: Hiện banner thông báo khi offline, biến mất khi sync xong.
     - *Không có full offline-first (out-of-scope), nhưng điểm số không bao giờ bị mất.*
+    - Có file excel lưu trữ tất cả các trận đấu và kết quả được export ra local của điện thoại mỗi 1 phút để đề phòng trường hợp mất mạng.
 
-13. **Share link public** theo dõi giải thời gian thực (kèm QR code để chiếu hoặc in tại nhà thi đấu).
+
+12. **Share link public** theo dõi giải thời gian thực (kèm QR code để chiếu hoặc in tại nhà thi đấu).
 
 Nếu thiếu 1 trong các mục **1–10** → MVP fail.
 
