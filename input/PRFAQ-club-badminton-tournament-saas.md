@@ -9,7 +9,7 @@
 
 **FOR IMMEDIATE RELEASE**
 
-### Giới thiệu *[Working name]* – Ứng dụng giúp CLB thiết lập và lên lịch giải cầu lông trong 30 phút thay vì cả buổi loay hoay với Excel
+### Giới thiệu *[Working name]* – Ứng dụng giúp CLB thiết lập và lên lịch giải cầu lông trong 10 phút thay vì cả buổi loay hoay với Excel
 
 Hà Nội – Hôm nay chúng tôi giới thiệu *[Working name]*, ứng dụng iOS giúp ban tổ chức CLB cầu lông tạo và vận hành giải đấu nhỏ (8–32 đội) nhanh chóng, chính xác và chuyên nghiệp.
 
@@ -17,9 +17,12 @@ Việc tổ chức giải cầu lông cấp CLB hiện nay vẫn phụ thuộc v
 
 *[Working name]* giải quyết vấn đề này bằng cách tự động hóa toàn bộ quy trình:
 
+* Gợi ý các format giải đấu theo số lượng đội tham gia và nhu cầu của BTC ưu tiên số trận đấu ít nhất có thể hay ưu tiên 1 đội tham gia được đấu nhiều trận.
+* Gợi ý luật điểm cho từng nội dung thi đấu (ví dụ: 1 set chạm 25, 1 set 31 điểm, best of 3 set, v.v.)
 * Tạo bracket trong vài giây
 * Tự động sinh danh sách gọi trận (Match Queue) thông minh để trống sân nào gọi trận đó
 * Nhập điểm trận đấu cực nhanh trên điện thoại — hỗ trợ nhiều trọng tài đồng thời
+* BTC có thể share QR dùng 1 lần để trọng tài có thể vào chấm điểm
 * Tự động cập nhật kết quả và nhánh đấu
 * Thông báo thông minh để VĐV tự biết khi nào chuẩn bị vào sân
 * Chia sẻ link public để VĐV theo dõi realtime
@@ -58,7 +61,8 @@ Quy trình phổ biến hiện tại:
 * Khó khăn trong việc lưu lại lịch sử thi đấu cho mọi người một cách dễ dàng, tiện lợi.
 * Mất công trong việc sắp xếp các trận đấu.
 * Mất công làm thủ công trong việc regenerate bracket khi có thay đổi phút chót.
-* Vận động viên bất tiện trong việc theo dõi kết quả và lịch thi đấu.
+* Vận động viên rất bất tiện trong việc theo dõi kết quả và lịch thi đấu. Không biết khoảng khi nào mình thi đấu. Không tổng hợp được kết quả để biết mình đang ở đâu.
+* Không có trọng tài riêng biệt, cần sắp xếp VĐV kiêm trọng tài, hơn nữa các VĐV cùng nội dung thi đấu không nên làm trọng tài cho nhau. Việc này cũng gây khó khăn trong việc sắp xếp trọng tài.
 
 👉 Ngày thi đấu = stress cực cao cho BTC.
 
@@ -103,7 +107,7 @@ Người dùng có thể:
 
 1. **Tạo giải:** Tất cả các thông tin cơ bản của giải đấu: tên giải, ngày bắt đầu, kết thúc thi đấu, địa điểm thi đấu, logo( tùy chọn, để in trên áo thi đấu, cúp, huy chương), banner( tùy chọn, hiển thị background cho giải đấu), mô tả giải.
 
-2. **Tạo các nội dung thi đấu:** Tất cả các nội dung thi đấu có chung 1 luật hoặc các nội dung thi đấu có luật điểm riêng (mặc định là đánh 1 Set (set x chạm y, mặc định là set 25 chạm 31. Nếu x=y thì gọi luật là "chạm x không hỏi" ) hoặc Best of 3 (set x chạm y, mặc định là set 21 chạm 31)). Ở các vòng tứ kết, bán kết, chung kết có thể thay đổi luật khác nhau để trận đấu diễn ra hấp dẫn hơn, chủ yếu vẫn là 1 set (chạm 25 hoặc 31). Luật điểm hiển thị trực tiếp trên màn hình nhập điểm để BTC/trọng tài không cần nhớ.
+2. **Tạo các nội dung thi đấu bên trong giải** Tất cả các nội dung thi đấu có chung 1 luật hoặc các nội dung thi đấu có luật điểm riêng (mặc định là đánh 1 Set (set x chạm y, mặc định là set 25 chạm 31. Nếu x=y thì gọi luật là "chạm x không hỏi" ) hoặc Best of 3 (set x chạm y, mặc định là set 21 chạm 31)). Ở các vòng tứ kết, bán kết, chung kết có thể thay đổi luật khác nhau để trận đấu diễn ra hấp dẫn hơn, chủ yếu vẫn là 1 set (chạm 25 hoặc 31). Luật điểm hiển thị trực tiếp trên màn hình nhập điểm để BTC/trọng tài không cần nhớ.
 
 3. **Nhập danh sách cá nhân/đội cực nhanh cho từng nội dung thi đấu:** Hỗ trợ tính năng Paste (dán) nguyên cột danh sách từ Excel/Zalo để hệ thống tự nhận diện, thay vì phải gõ tay từng tên trên điện thoại.
 

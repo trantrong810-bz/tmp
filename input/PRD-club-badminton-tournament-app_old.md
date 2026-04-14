@@ -1,6 +1,21 @@
+---
+workflowType: 'prd'
+workflow: 'edit'
+classification:
+  domain: 'sports-tournament'
+  projectType: 'saas-mobile'
+  complexity: 'medium'
+inputDocuments: ['PRFAQ-club-badminton-tournament-saas.md']
+stepsCompleted: ['step-e-01-discovery', 'step-e-02-review', 'step-e-03-edit']
+lastEdited: '2026-04-10'
+editHistory:
+  - date: '2026-04-10'
+    changes: 'Updated Create Tournament fields and added Excel Export Fallback based on PRFAQ updates'
+---
+
 # PRODUCT REQUIREMENTS DOCUMENT (PRD)
 
-> **Version:** 1.1 | **Cập nhật:** 2026-04-08
+> **Version:** 1.2 | **Cập nhật:** 2026-04-10
 > **Platform:** iOS (MVP). Android + Web Viewer là roadmap.
 > **Tài liệu gốc:** [PRFAQ-club-badminton-tournament-saas.md](./PRFAQ-club-badminton-tournament-saas.md)
 > **Trạng thái:** Draft — chờ architecture review 2-Tier Role & Notification trước khi dev.
@@ -97,8 +112,11 @@ Admin tạo giải với các trường:
 | Field | Bắt buộc | Ghi chú |
 |---|---|---|
 | Tên giải | ✓ | |
-| Ngày thi đấu | Tùy chọn | |
-| Logo / Banner | Tùy chọn | |
+| Ngày bắt đầu thi đấu | Tùy chọn | |
+| Ngày kết thúc thi đấu | Tùy chọn | |
+| Địa điểm thi đấu | Tùy chọn | |
+| Logo | Tùy chọn | Dùng để in áo/cúp/huy chương |
+| Banner | Tùy chọn | Hiển thị background cho giải đấu |
 | Mô tả giải | Tùy chọn | Hiển thị trên public page |
 
 Sau khi tạo → vào màn hình cấu hình giải (tạo Event).
@@ -336,7 +354,8 @@ Trang public dẫn đến màn hình cài App (nếu muốn Follow/nhận notifi
 
 * **Optimistic Local Commit:** Điểm lưu local ngay, sync server ngầm sau
 * **"Saved Locally" Toast:** Hiện banner khi offline, tự mất khi sync xong
-* **Phạm vi:** Chỉ cache điểm số trong session hiện tại — không có full offline mode
+* **Excel Export Fallback:** Có file excel lưu trữ tất cả các trận đấu và kết quả tự động export ra local của điện thoại mỗi 1 phút để đề phòng mất mạng hoàn toàn.
+* **Phạm vi:** Chỉ cache điểm số trong session hiện tại và file excel chạy ngầm — không có full offline mode
 
 ---
 
@@ -375,6 +394,7 @@ Trang public dẫn đến màn hình cài App (nếu muốn Follow/nhận notifi
 | Generate bracket | < 3 giây |
 | Save score (local commit) | < 0.5 giây (optimistic) |
 | Sync score lên server | < 1 giây (khi có mạng) |
+| Excel Export Background | Không gây giật lag hoặc tăng thời gian Save score > 1s |
 | Learning time cho Admin mới | < 10 phút |
 | Push Notification latency | < 5 giây sau trigger |
 | WebSocket reconnect | Tự động, user không thấy gián đoạn |
